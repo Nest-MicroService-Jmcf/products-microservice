@@ -31,8 +31,6 @@ export class ProductsService extends PrismaClient implements OnModuleInit {
     const totalPages = await this.product.count({where:{available:true}});
     const lastPage = Math.ceil(totalPages / limit!);
     return {
-
-      
       data: await this.product.findMany({
         skip: (page! - 1) * limit!,
         take: limit,
